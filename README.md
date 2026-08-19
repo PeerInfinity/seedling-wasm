@@ -17,11 +17,15 @@ same-origin iframe can drive. Load `<build>/game.html`; nothing else is needed.
   <name>.wasm          the recompiled game (~31-34 MB)
 ```
 
-⛔ **`<name>` is not always the directory name.** `seedling_bot_ap_phase3/`
-carries `seedling_bot_ap.{js,wasm}` — the directory was renamed, the build was
+⛔ **`<name>` is not always the directory name.** Both builds pinned here
+happen to agree today, so the rule needs its evidence stated rather than
+demonstrated: `seedling_bot_ap_phase3/`, pinned until 2026-08-19, carried
+`seedling_bot_ap.{js,wasm}` — the directory had been renamed and the build had
 not. `builds.json`'s `js` / `wasm` fields are the authority, and `game.html`'s
 own `<script src>` is where they come from. Anything that resolves a payload
-filename from the directory name is wrong for that build.
+filename from the directory name is wrong for such a build — and so is
+anything that assumes the directory name, which is the OTHER half and cost the
+consuming repo a silently-skipping check row.
 
 The page needs **WebGPU**. It comes up headless on
 `--enable-unsafe-webgpu --ignore-gpu-blocklist --enable-unsafe-swiftshader
@@ -69,7 +73,7 @@ files where every existing path expects them.
 
 > **A build lives here iff a tracked file of Archipelago-CC names it.**
 
-That is the whole rule, and it is enforced three ways at once:
+That is the whole rule, and it is enforced four ways at once:
 
 | Where | What it says |
 |---|---|
@@ -77,11 +81,23 @@ That is the whole rule, and it is enforced three ways at once:
 | `builds.json` | one manifest entry per pinned build, with md5s and *who names it* |
 | Archipelago-CC's `scripts/procgen/check-seedling-wasm-pins.mjs` | reds unless the tracked-reference set, the whitelist, `git ls-tree` here, and `builds.json` all agree |
 
-A reference is a reference however it is spelled. That gate enumerates three
-spellings, because all three occur in the consuming tree: the literal
-`wasm/<name>` path, a preset's `"wasm": "<name>/game.html"`, and a script's
-`const PAGE_NAME = process.env.SEEDLING_PAGE || '<name>'` **default** (the
-default is the pin — the environment variable is just an override).
+A reference is a reference however it is spelled, and that has now been the
+finding three separate times. The gate enumerates **four** spellings, over a
+text in which adjacent string literals have been joined first, because every
+one of those forms occurs in the consuming tree:
+
+1. the literal `wasm/<name>` path — including `../flashPanel/wasm/<name>/…`
+   and a full `http://localhost:8000/…` URL, none of which the first version
+   of this scan could see, because it excluded a leading `/`;
+2. a preset's `"wasm": "<name>/game.html"`;
+3. a script's `process.env.SEEDLING_PAGE || '<name>'` **default** — the
+   default is the pin, the environment variable is just an override;
+4. a bare `PAGE_NAME = '<name>'` constant.
+
+An env EXAMPLE in a docblock is deliberately *not* a pin — that is the rule
+keeping the historical builds out — so spelling 4 is scoped to `PAGE_NAME`
+rather than matching any quoted name. `check-seedling-wasm-pins.mjs
+--self-test` gates all of this with one seen/not-seen case per spelling.
 
 The whitelist exists because the working copy is not the repository. Builds
 nobody pins any more stay on a developer's disk in this same directory and stay
