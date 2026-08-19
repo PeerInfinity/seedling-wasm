@@ -33,26 +33,6 @@
       "note": "Phase 4b \u2014 THE bot build since 2026-08-19, when it absorbed everything seedling_bot_ap named. Its bridge surface is a strict superset of that build's eight verbs (it adds botForgeSaveStamp, botLevelSet, botLoadLevels). The retirement was EARNED by measurement, not assumed: the R8 tape gate (verify-seedling-bot-differential.mjs --win --only=<the 20 r8-* tapes>, comparing against seedling_bot_ap's OWN oracle recordings) read 534 PASS / 0 FAIL / 67 SKIP on both builds, run back to back with nothing edited in between; all 602 check lines agree in order and in text but for 13, each a free-running clock whose control arm \u2014 the same build re-run \u2014 moved at least as far. No expectation, tape or battery byte moved."
     },
     {
-      "name": "seedling_bot_ap_phase3",
-      "js": "seedling_bot_ap.js",
-      "wasm": "seedling_bot_ap.wasm",
-      "jsMd5": "3d65f36af2286c2cede7752392021f9f",
-      "wasmMd5": "d197c8ee444775f4feb5b4b51b271b71",
-      "gameHtmlMd5": "7c05d1fb0d3552403ab9723c1ca18713",
-      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
-      "bytes": {
-        "game.html": 3637,
-        "swf_bridge_avm2.js": 4725,
-        "seedling_bot_ap.js": 146148,
-        "seedling_bot_ap.wasm": 33757190
-      },
-      "builtFrom": "no source found in SWFRecomp-CC",
-      "namedBy": [
-        "scripts/procgen/probe-seedling-level-set-transport.mjs (SEEDLING_PAGE default)"
-      ],
-      "note": "Phase 3 \u2014 the receiver probe's default. Its payload files are still named seedling_bot_ap.{js,wasm}: the directory was renamed, the build was not. Read `js`/`wasm` below, never the directory name."
-    },
-    {
       "name": "seedling_teleport_ap",
       "js": "seedling_teleport_ap.js",
       "wasm": "seedling_teleport_ap.wasm",
