@@ -42,7 +42,7 @@ These are the pages a person can open and watch the recompiled game run:
 | build | live | in the consuming repo |
 |---|---|---|
 | `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster | `seedlingDemo/watchViewer.js` (`WASM_PAGE`), and the `SEEDLING_PAGE` default of `verify-seedling-bot-differential.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages}.mjs`, `probe-seedling-level-set-transport.mjs` and ~28 other `scripts/procgen/{probe,plan,solve,run}-seedling-*.mjs` |
-| `seedling_teleport_ap` | [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1) — the Archipelago panel drives the game over `__swfBridge` | the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `verify-seedling-wasm-bridge.mjs`, `verify-seedling-atlas-play.mjs` |
+| `seedling_teleport_ap` | [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `verify-seedling-wasm-bridge.mjs`, `verify-seedling-atlas-play.mjs` |
 
 The [procgen demo catalogue](https://peerinfinity.github.io/Archipelago-CC/modules/procgenDocs/demos.html)
 links further watch.html URLs; they run the JS engine rather than the wasm, so
