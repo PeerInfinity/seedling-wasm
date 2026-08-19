@@ -1,0 +1,28 @@
+# ⛔ THIS FILE IS THE PIN POLICY, and it is a WHITELIST, not a blocklist.
+#
+# This directory is mounted as a submodule INSIDE a working tree that also
+# holds build directories nobody pins any more — historical builds that are
+# still reachable locally by `SEEDLING_PAGE=<name>` and must stay on disk
+# without ever being committed here. A blocklist cannot express that: a new
+# historical build would silently become trackable. So everything is ignored
+# and each PINNED build is named back in, one line each.
+#
+# THE RULE: a build is pinned iff a TRACKED file of PeerInfinity/Archipelago-CC
+# names it. That repo's scripts/procgen/check-seedling-wasm-pins.mjs gates the
+# agreement between this whitelist, builds.json, and what git tracks here, so
+# adding a line without the manifest entry (or vice versa) reds a CI row.
+#
+# To ADD a build:    a `!/<name>/` line here + a builds.json entry + the dir.
+# To RETIRE one:     delete both; the directory may stay on disk, untracked.
+
+/*
+!/.gitignore
+!/LICENSE
+!/README.md
+!/builds.json
+
+# ── the pinned builds ───────────────────────────────────────────────────
+!/seedling_bot_ap/
+!/seedling_teleport_ap/
+!/seedling_bot_ap_p4b/
+!/seedling_bot_ap_phase3/

@@ -1,0 +1,100 @@
+{
+  "$comment": "The pin manifest. A build is in this repository iff a TRACKED file of Archipelago-CC names it; scripts/procgen/check-seedling-wasm-pins.mjs in that repo gates the three-way agreement between this manifest, the .gitignore whitelist, and what git actually tracks here. Every build directory carries exactly four files. `js`/`wasm` are the AUTHORITY on the payload filenames \u2014 they do not always match the directory name.",
+  "files": [
+    "game.html",
+    "swf_bridge_avm2.js",
+    "<js>",
+    "<wasm>"
+  ],
+  "consumedBy": "PeerInfinity/Archipelago-CC at frontend/modules/flashPanel/wasm/",
+  "builds": [
+    {
+      "name": "seedling_bot_ap",
+      "js": "seedling_bot_ap.js",
+      "wasm": "seedling_bot_ap.wasm",
+      "jsMd5": "167ee481a0e0d0d47430dd3405ca825a",
+      "wasmMd5": "7b8be39f5e236dd1e4ea388c19698aba",
+      "gameHtmlMd5": "7c05d1fb0d3552403ab9723c1ca18713",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3637,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_bot_ap.js": 146148,
+        "seedling_bot_ap.wasm": 33604931
+      },
+      "builtFrom": "~/CC/SWFRecomp-CC/docs2/examples/avm2/seedling_bot_ap/ (byte-identical, md5-verified 2026-08-19; SWFRecomp-CC HEAD 9d038c750eaf021d3f42487b5f97f190a378f3ce)",
+      "namedBy": [
+        "frontend/modules/seedlingDemo/watchViewer.js (WASM_PAGE \u2014 watch.html's game iframe)",
+        "scripts/procgen/verify-seedling-bot-differential.mjs (SEEDLING_PAGE default + PAGE_BASE)",
+        "scripts/procgen/run-seedling-director.mjs, plan-seedling-r7-{act2,ends-meet}.mjs, solve-seedling-r8-{d2-chain,tail}.mjs and 19 probe-seedling-*.mjs (PAGE_NAME)"
+      ],
+      "note": "The R8 bot build. watch.html loads this one, so it is the build GitHub Pages must serve."
+    },
+    {
+      "name": "seedling_bot_ap_p4b",
+      "js": "seedling_bot_ap_p4b.js",
+      "wasm": "seedling_bot_ap_p4b.wasm",
+      "jsMd5": "1c2d98ba0051bcd2cd09ed28145f6fde",
+      "wasmMd5": "d4af0fd2768f633b9414d746894fab67",
+      "gameHtmlMd5": "51d037aa5dc6996808981c5f73351665",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3649,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_bot_ap_p4b.js": 146152,
+        "seedling_bot_ap_p4b.wasm": 33848678
+      },
+      "builtFrom": "~/CC/SWFRecomp-CC/docs2/examples/avm2/seedling_bot_ap_p4b/ (byte-identical, md5-verified 2026-08-19; SWFRecomp-CC HEAD 9d038c750eaf021d3f42487b5f97f190a378f3ce)",
+      "namedBy": [
+        "scripts/procgen/check-seedling-generated-set.mjs (SEEDLING_PAGE default)",
+        "scripts/procgen/check-seedling-save-stamp.mjs (SEEDLING_PAGE default)",
+        "scripts/procgen/check-seedling-vanilla-manifest.mjs (SEEDLING_PAGE default)"
+      ],
+      "note": "Phase 4b \u2014 the current default of the three check-seedling-* rows."
+    },
+    {
+      "name": "seedling_bot_ap_phase3",
+      "js": "seedling_bot_ap.js",
+      "wasm": "seedling_bot_ap.wasm",
+      "jsMd5": "3d65f36af2286c2cede7752392021f9f",
+      "wasmMd5": "d197c8ee444775f4feb5b4b51b271b71",
+      "gameHtmlMd5": "7c05d1fb0d3552403ab9723c1ca18713",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3637,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_bot_ap.js": 146148,
+        "seedling_bot_ap.wasm": 33757190
+      },
+      "builtFrom": "no source found in SWFRecomp-CC",
+      "namedBy": [
+        "scripts/procgen/probe-seedling-level-set-transport.mjs (SEEDLING_PAGE default)"
+      ],
+      "note": "Phase 3 \u2014 the receiver probe's default. Its payload files are still named seedling_bot_ap.{js,wasm}: the directory was renamed, the build was not. Read `js`/`wasm` below, never the directory name."
+    },
+    {
+      "name": "seedling_teleport_ap",
+      "js": "seedling_teleport_ap.js",
+      "wasm": "seedling_teleport_ap.wasm",
+      "jsMd5": "d1f200f37cb9493e3e2cefb3a9f16056",
+      "wasmMd5": "acbc520b95241efdf9642959c610eef9",
+      "gameHtmlMd5": "585b29e822312c574776c6438f035b86",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3652,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_teleport_ap.js": 96920,
+        "seedling_teleport_ap.wasm": 31154461
+      },
+      "builtFrom": "~/CC/SWFRecomp-CC/docs2/examples/avm2/seedling_teleport_ap/ (byte-identical, md5-verified 2026-08-19; SWFRecomp-CC HEAD 9d038c750eaf021d3f42487b5f97f190a378f3ce)",
+      "namedBy": [
+        "frontend/presets/seedling/AP_14089154938208861744/AP_14089154938208861744_rules.json (flash_panel.wasm)",
+        "frontend/presets/seedling_atlas/AP_1/AP_1_rules.json (flash_panel.wasm)",
+        "frontend/presets/seedling_playthrough/AP_1/AP_1_rules.json (flash_panel.wasm)",
+        "frontend/modules/procgenPipeline/regionAtlasCompiler.js (+ .test.js) \u2014 the compiled flash_panel block",
+        "scripts/procgen/verify-seedling-wasm-bridge.mjs, verify-seedling-atlas-play.mjs (ARTIFACT)"
+      ],
+      "note": "The Stage-1 teleport build the three seedling presets wire as flash_panel.wasm."
+    }
+  ]
+}
