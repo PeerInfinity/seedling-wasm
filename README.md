@@ -35,28 +35,39 @@ so a host does **not** need COOP/COEP headers — plain GitHub Pages serves it.
 
 ## Who uses these builds, and where they are live
 
-Both pinned builds are served from the consuming repo's GitHub Pages site, at
+The pinned build is served from the consuming repo's GitHub Pages site, at
 `https://peerinfinity.github.io/Archipelago-CC/modules/flashPanel/wasm/<build>/game.html`.
 These are the pages a person can open and watch the recompiled game run:
 
 | build | live | in the consuming repo |
 |---|---|---|
-| `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster | `seedlingDemo/watchViewer.js` (`WASM_PAGE`), and the `SEEDLING_PAGE` default of `verify-seedling-bot-differential.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages}.mjs`, `probe-seedling-level-set-transport.mjs` and ~28 other `scripts/procgen/{probe,plan,solve,run}-seedling-*.mjs` |
-| `seedling_teleport_ap` | [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `verify-seedling-wasm-bridge.mjs`, `verify-seedling-atlas-play.mjs` |
+| `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster.  ⛓ And [**▶ load in wasm**](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?source=generate&seed=1&biome=pre-sword&count=4&tries=8&k=3&anchortries=1&run=1): generate a room in the page, press the button, then press ▶ Start — the generated room mounts as a one-room LEVEL SET and its certification solve replays into it.  ⛓ And [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | `seedlingDemo/watchWasm.js` (`WASM_PAGE`), the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `verify-seedling-wasm-bridge.mjs`, `verify-seedling-atlas-play.mjs`, and the `SEEDLING_PAGE` default of `verify-seedling-bot-differential.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages,wasm-ship}.mjs`, `probe-seedling-level-set-transport.mjs` and ~28 other `scripts/procgen/{probe,plan,solve,run}-seedling-*.mjs` |
 
 The [procgen demo catalogue](https://peerinfinity.github.io/Archipelago-CC/modules/procgenDocs/demos.html)
 links further watch.html URLs; they run the JS engine rather than the wasm, so
 they exercise the same tapes without loading 33 MB.
 
-⚠ **Both live pages need WebGPU and a real user gesture.** The ▶ Start button
+⚠ **Every live page here needs WebGPU and a real user gesture.** The ▶ Start button
 inside the frame has to be clicked by a person (or by a browser automation
 tool, whose click is a real input event) — the renderer and the audio context
 consume the activation, and the host page deliberately refuses to press it.
 
-⛓ **The pin set was four builds until 2026-08-19 and is two.**
-`seedling_bot_ap` and `seedling_bot_ap_phase3` retired on measurement, not on
-tidiness — see their commits. Both are still on developers' disks, untracked
-under the whitelist, reachable as `SEEDLING_PAGE=<name>`.
+⛓ **The pin set was four builds on the morning of 2026-08-19 and is ONE.**
+`seedling_bot_ap`, `seedling_bot_ap_phase3` and `seedling_teleport_ap` all
+retired on MEASUREMENT rather than on tidiness, and each was earned by the gate
+that had pinned it — see their commits. All three are still on developers'
+disks, untracked under the whitelist, reachable as `SEEDLING_PAGE=<name>`.
+
+⛓⛓ `seedling_teleport_ap` was the variant that skips the preloader and the
+title screen, and the flash panel loaded it because that is what was on hand
+when the panel was written. `verify-seedling-wasm-bridge.mjs` — the row that
+pinned it — reads **ALL PASS 12/12** with the presets, `regionAtlasCompiler`
+and both verify rows pointed at `seedling_bot_ap_p4b`, **including the arm the
+variant is named for** (*"teleport new_instance applied by BridgeGeneric"*).
+The different boot path costs nothing: the panel already waits for the user's
+▶ Start and for the bridge handshake to reach `ready` before it configures
+anything, so a build that shows a title screen first arrives at the same place
+a little later. ⇒ **63 MB of checkout became 33 MB.**
 
 ## Why this is a repository
 
