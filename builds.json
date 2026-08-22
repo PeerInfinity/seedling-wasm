@@ -1,5 +1,5 @@
 {
-  "$comment": "The pin manifest. A build is in this repository iff a TRACKED file of Archipelago-CC names it; scripts/procgen/check-seedling-wasm-pins.mjs in that repo gates the FOUR-way agreement between this manifest, the .gitignore whitelist, what git actually tracks here, and the build names that repo\u2019s tracked files actually spell. Every build directory carries exactly four files. `js`/`wasm` are the AUTHORITY on the payload filenames \u2014 they do not always match the directory name.",
+  "$comment": "The pin manifest. A build is in this repository iff a TRACKED file of Archipelago-CC names it; scripts/procgen/check-seedling-wasm-pins.mjs in that repo gates the FOUR-way agreement between this manifest, the .gitignore whitelist, what git actually tracks here, and the build names that repo’s tracked files actually spell. Every build directory carries exactly four files. `js`/`wasm` are the AUTHORITY on the payload filenames — they do not always match the directory name.",
   "files": [
     "game.html",
     "swf_bridge_avm2.js",
@@ -12,29 +12,29 @@
       "name": "seedling_bot_ap_p4b",
       "js": "seedling_bot_ap_p4b.js",
       "wasm": "seedling_bot_ap_p4b.wasm",
-      "jsMd5": "1c2d98ba0051bcd2cd09ed28145f6fde",
-      "wasmMd5": "d4af0fd2768f633b9414d746894fab67",
+      "jsMd5": "1894fb9300f53b00290473e97fbe6f99",
+      "wasmMd5": "8d12d7bb62af2be090dec969ac91cb85",
       "gameHtmlMd5": "51d037aa5dc6996808981c5f73351665",
       "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
       "bytes": {
         "game.html": 3649,
         "swf_bridge_avm2.js": 4725,
         "seedling_bot_ap_p4b.js": 146152,
-        "seedling_bot_ap_p4b.wasm": 33848678
+        "seedling_bot_ap_p4b.wasm": 33795105
       },
-      "builtFrom": "~/CC/SWFRecomp-CC/docs2/examples/avm2/seedling_bot_ap_p4b/ (byte-identical, md5-verified 2026-08-19; SWFRecomp-CC HEAD 9d038c750eaf021d3f42487b5f97f190a378f3ce)",
+      "builtFrom": "~/CC/SWFRecomp-CC/docs2/examples/avm2/seedling_bot_ap_p4b/ (byte-identical, md5-verified 2026-08-22; SWFRecomp-CC HEAD 06f3d87d295b03b44b94221d38594612ecda4ff5; AS3 fork ~/CC/seedling branch `bot` @ c2119e6749578aa5eb70e625ac327f3a690e1441 — ⚖ ruling 25, the unconditional persistence + save-array resets in botStart. FULL rebuild, FRESH=1: mxmlc -> inject -> SWFRecomp -> emcc, 22m09s.)",
       "namedBy": [
-        "frontend/modules/seedlingDemo/watchWasm.js (WASM_PAGE \u2014 watch.html's game iframe, and the \u25b6 load-in-wasm ship)",
-        "frontend/presets/{seedling,seedling_atlas,seedling_playthrough}/**/AP_*_rules.json (flash_panel.wasm \u2014 the app's Flash Game panel, since 2026-08-19)",
+        "frontend/modules/seedlingDemo/watchWasm.js (WASM_PAGE — watch.html's game iframe, and the ▶ load-in-wasm ship)",
+        "frontend/presets/{seedling,seedling_atlas,seedling_playthrough}/**/AP_*_rules.json (flash_panel.wasm — the app's Flash Game panel, since 2026-08-19)",
         "frontend/modules/procgenPipeline/regionAtlasCompiler.js (the seedling entry's wasm page)",
         "scripts/procgen/verify-seedling-bot-differential.mjs (SEEDLING_PAGE default; PAGE_BASE is now read out of game.html)",
         "scripts/procgen/verify-seedling-wasm-bridge.mjs and verify-seedling-atlas-play.mjs (ARTIFACT)",
-        "scripts/procgen/check-seedling-wasm-pages.mjs (BUILD \u2014 the live-site row) and check-seedling-wasm-ship.mjs",
+        "scripts/procgen/check-seedling-wasm-pages.mjs (BUILD — the live-site row) and check-seedling-wasm-ship.mjs",
         "scripts/procgen/check-seedling-{generated-set,save-stamp,vanilla-manifest}.mjs (SEEDLING_PAGE default)",
         "scripts/procgen/probe-seedling-level-set-transport.mjs (SEEDLING_PAGE default)",
         "scripts/procgen/run-seedling-director.mjs, plan-seedling-r7-{act2,ends-meet}.mjs, solve-seedling-r8-{d2-chain,tail}.mjs and 25 probe-seedling-*.mjs (SEEDLING_PAGE default)"
       ],
-      "note": "Phase 4b \u2014 THE bot build since 2026-08-19, when it absorbed everything seedling_bot_ap named. Its bridge surface is a strict superset of that build's eight verbs (it adds botForgeSaveStamp, botLevelSet, botLoadLevels). The retirement was EARNED by measurement, not assumed: the R8 tape gate (verify-seedling-bot-differential.mjs --win --only=<the 20 r8-* tapes>, comparing against seedling_bot_ap's OWN oracle recordings) read 534 PASS / 0 FAIL / 67 SKIP on both builds, run back to back with nothing edited in between; all 602 check lines agree in order and in text but for 13, each a free-running clock whose control arm \u2014 the same build re-run \u2014 moved at least as far. No expectation, tape or battery byte moved. \u26d3 2026-08-19, the \u25b6 load-in-wasm slice: it absorbed seedling_teleport_ap too, and that retirement was earned by the gate that pinned the variant \u2014 verify-seedling-wasm-bridge.mjs reads ALL PASS 12/12 with the three presets, regionAtlasCompiler and both verify rows pointed here, INCLUDING the arm the variant is named for (\u201cteleport new_instance applied by BridgeGeneric\u201d). The variant skipped the preloader and the title screen; that costs nothing, because the flash panel already waits for the user's \u25b6 Start and for the bridge handshake to reach ready before it configures anything. \u21d2 ONE pinned build."
+      "note": "Phase 4b — THE bot build since 2026-08-19, when it absorbed everything seedling_bot_ap named. Its bridge surface is a strict superset of that build's eight verbs (it adds botForgeSaveStamp, botLevelSet, botLoadLevels). The retirement was EARNED by measurement, not assumed: the R8 tape gate (verify-seedling-bot-differential.mjs --win --only=<the 20 r8-* tapes>, comparing against seedling_bot_ap's OWN oracle recordings) read 534 PASS / 0 FAIL / 67 SKIP on both builds, run back to back with nothing edited in between; all 602 check lines agree in order and in text but for 13, each a free-running clock whose control arm — the same build re-run — moved at least as far. No expectation, tape or battery byte moved. ⛓ 2026-08-19, the ▶ load-in-wasm slice: it absorbed seedling_teleport_ap too, and that retirement was earned by the gate that pinned the variant — verify-seedling-wasm-bridge.mjs reads ALL PASS 12/12 with the three presets, regionAtlasCompiler and both verify rows pointed here, INCLUDING the arm the variant is named for (“teleport new_instance applied by BridgeGeneric”). The variant skipped the preloader and the title screen; that costs nothing, because the flash panel already waits for the user's ▶ Start and for the bridge handshake to reach ready before it configures anything. ⇒ ONE pinned build."
     }
   ]
 }
