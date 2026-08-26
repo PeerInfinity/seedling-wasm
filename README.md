@@ -35,13 +35,26 @@ so a host does **not** need COOP/COEP headers — plain GitHub Pages serves it.
 
 ## Who uses these builds, and where they are live
 
-The pinned build is served from the consuming repo's GitHub Pages site, at
+Each pinned build is served from the consuming repo's GitHub Pages site, at
 `https://peerinfinity.github.io/Archipelago-CC/modules/flashPanel/wasm/<build>/game.html`.
 These are the pages a person can open and watch the recompiled game run:
 
+⛓ **TWO BUILDS ARE PINNED (2026-08-26, R9 slice 12g′), and only one of them is a
+DEFAULT.** `seedling_bot_ap_p4c` is THE bot build — every `SEEDLING_PAGE`
+default, `WASM_PAGE`, the three presets' `flash_panel.wasm` and both tests that
+assert the name spell it. `seedling_bot_ap_p4b` is its predecessor and is
+pinned ONLY because tracked prose in the consuming repo still names it: two
+lines of `docs/json/developer/procgen/seedling-bot.md` say which build a
+measurement RAN AGAINST, and rewriting those would make the doc lie about its
+own history. ⚠ That is a real pin with a real cost (~34 MB) and it is meant to
+be TEMPORARY: the fifth-run slice (12h) retires p4b at its close, at which
+point those two doc lines become historical statements about a build that is no
+longer on disk here — which is what the whitelist is for.
+
 | build | live | in the consuming repo |
 |---|---|---|
-| `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster.  ⛓ And [**▶ load in wasm**](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?source=generate&seed=1&biome=pre-sword&count=4&tries=8&k=3&anchortries=1&run=1): generate a room in the page, press the button, then press ▶ Start — the generated room mounts as a one-room LEVEL SET and its certification solve replays into it.  ⛓ And [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | `seedlingDemo/watchWasm.js` (`WASM_PAGE`), the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `verify-seedling-wasm-bridge.mjs`, `verify-seedling-atlas-play.mjs`, and the `SEEDLING_PAGE` default of `verify-seedling-bot-differential.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages,wasm-ship}.mjs`, `probe-seedling-level-set-transport.mjs` and ~28 other `scripts/procgen/{probe,plan,solve,run}-seedling-*.mjs` |
+| `seedling_bot_ap_p4c` | the same three pages as the row below — it replaced `p4b` as the default everywhere on 2026-08-26 | `seedlingDemo/watchWasm.js` (`WASM_PAGE`) and `watchEditor.js`, the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `watchWasm.test.js` (asserts the exact page string), `verify-seedling-{wasm-bridge,atlas-play,bot-differential}.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages,wasm-ship}.mjs`, and ~40 other `scripts/procgen/{probe,plan,solve,run,derive,rerecord}-seedling-*.mjs`. **53 tracked files spell it**, which is the whole story of why a default flip is a derived list and never a typed one |
+| `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster.  ⛓ And [**▶ load in wasm**](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?source=generate&seed=1&biome=pre-sword&count=4&tries=8&k=3&anchortries=1&run=1): generate a room in the page, press the button, then press ▶ Start — the generated room mounts as a one-room LEVEL SET and its certification solve replays into it.  ⛓ And [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | ⛔ **NOTHING NAMES IT AS A DEFAULT ANY MORE.** Its only tracked references are two prose lines of `docs/json/developer/procgen/seedling-bot.md` recording which build §43's and §45's measurements ran against. It held every default listed in the row above until 2026-08-26 |
 
 The [procgen demo catalogue](https://peerinfinity.github.io/Archipelago-CC/modules/procgenDocs/demos.html)
 links further watch.html URLs; they run the JS engine rather than the wasm, so
