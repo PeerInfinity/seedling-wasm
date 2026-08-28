@@ -39,8 +39,8 @@ Each pinned build is served from the consuming repo's GitHub Pages site, at
 `https://peerinfinity.github.io/Archipelago-CC/modules/flashPanel/wasm/<build>/game.html`.
 These are the pages a person can open and watch the recompiled game run:
 
-⛓ **TWO BUILDS ARE PINNED (2026-08-26, R9 slice 12g′), and only one of them is a
-DEFAULT.** `seedling_bot_ap_p4c` is THE bot build — every `SEEDLING_PAGE`
+⛓ **THREE BUILDS ARE PINNED (2026-08-28, EDITOR INTEGRATION slice M1), and only
+one of them is a DEFAULT.** `seedling_bot_ap_p4c` is THE bot build — every `SEEDLING_PAGE`
 default, `WASM_PAGE`, the three presets' `flash_panel.wasm` and both tests that
 assert the name spell it. `seedling_bot_ap_p4b` is its predecessor and is
 pinned ONLY because tracked prose in the consuming repo still names it: two
@@ -51,8 +51,23 @@ be TEMPORARY: the fifth-run slice (12h) retires p4b at its close, at which
 point those two doc lines become historical statements about a build that is no
 longer on disk here — which is what the whitelist is for.
 
+⛓ **`seedling_bot_ap_p4d` (2026-08-28) is the newcomer and is NOT a default.**
+It is the first build carrying anything the host reads beyond the vanilla item
+flags: `Pickups/APItem.as` (Archipelago's placement pickup, which grants
+NOTHING), `Game.pendingExit`/`pendingCheck` and the `keyMask`/`totemCount`
+getters. Exactly ONE tracked file names it — the M1 rows of
+`scripts/procgen/verify-seedling-ap-placement.mjs`, which SKIP by name without
+the artifact — and that reference is written as a whole literal path on purpose:
+⚠ a name in its own `const` with the path assembled by `join(REPO, 'frontend',
+'modules', …)` matches **none** of `check-seedling-wasm-pins.mjs`'s four
+spellings, which was measured here, and an unreferenced build is one the gate
+clears for retirement while an instrument still loads it. Whether p4d also
+becomes the default is a separate decision that moves **53 tracked files / 69
+lines**.
+
 | build | live | in the consuming repo |
 |---|---|---|
+| `seedling_bot_ap_p4d` | not wired into any page yet — reachable as `SEEDLING_PAGE=seedling_bot_ap_p4d` and by the M1 rows that name it | `scripts/procgen/verify-seedling-ap-placement.mjs` (the M1 rows: the `APItem` draws, its `@look` picks the sprite, `pendingCheck` reports the collection, `pendingExit` reports the door before the level moves). **1 tracked file spells it**, deliberately: a non-default build should be reachable and pinned, not woven in |
 | `seedling_bot_ap_p4c` | the same three pages as the row below — it replaced `p4b` as the default everywhere on 2026-08-26 | `seedlingDemo/watchWasm.js` (`WASM_PAGE`) and `watchEditor.js`, the three seedling presets' `flash_panel.wasm`, `procgenPipeline/regionAtlasCompiler.js` (+ its test), `watchWasm.test.js` (asserts the exact page string), `verify-seedling-{wasm-bridge,atlas-play,bot-differential}.mjs`, `check-seedling-{generated-set,save-stamp,vanilla-manifest,wasm-pages,wasm-ship}.mjs`, and ~40 other `scripts/procgen/{probe,plan,solve,run,derive,rerecord}-seedling-*.mjs`. **53 tracked files spell it**, which is the whole story of why a default flip is a derived list and never a typed one |
 | `seedling_bot_ap_p4b` | [watch.html, a committed tape on the wasm side](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?tape=frontend/modules/seedlingDemo/fixtures/tapes/pit-fall-chain-85.json&side=wasm) — press ▶ Start inside the frame; pick any of the 153 tapes from the roster.  ⛓ And [**▶ load in wasm**](https://peerinfinity.github.io/Archipelago-CC/modules/seedlingDemo/watch.html?source=generate&seed=1&biome=pre-sword&count=4&tries=8&k=3&anchortries=1&run=1): generate a room in the page, press the button, then press ▶ Start — the generated room mounts as a one-room LEVEL SET and its certification solve replays into it.  ⛓ And [the app itself, flash panel, Seedling seed 1](https://peerinfinity.github.io/Archipelago-CC/index.html?mode=flash&game=seedling&seed=1&focusPanel=flashPanel) — the Archipelago panel drives the game over `__swfBridge` | ⛔ **NOTHING NAMES IT AS A DEFAULT ANY MORE.** Its only tracked references are two prose lines of `docs/json/developer/procgen/seedling-bot.md` recording which build §43's and §45's measurements ran against. It held every default listed in the row above until 2026-08-26 |
 
