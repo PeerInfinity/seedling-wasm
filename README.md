@@ -4,6 +4,11 @@ SWFRecomp-recompiled [Seedling](https://github.com/ConnorUllmann/Seedling) build
 consumed by [Archipelago-CC](https://github.com/PeerInfinity/Archipelago-CC) as a
 git submodule mounted at `frontend/modules/flashPanel/wasm/`.
 
+▶ **[PLAY SEEDLING — the original game](https://peerinfinity.github.io/seedling-wasm/seedling_original/game.html)**
+— `seedling_original/` is the game as published, recompiled to WebAssembly from the
+pre-fork ActionScript (`826ba77`): no bridge, no bot, no Archipelago. Open it, press
+▶ Start, and play with the arrow keys.
+
 Each directory is a **self-contained game page**: an ActionScript 3 SWF put
 through [SWFRecomp](https://github.com/PeerInfinity/SWFRecomp-CC) into
 WebAssembly, wrapped in a page that installs the `__swfBridge` host surface a
@@ -110,9 +115,23 @@ files where every existing path expects them.
 
 ## The pin policy
 
-> **A build lives here iff a tracked file of Archipelago-CC names it.**
+> **A build lives here iff a tracked file of Archipelago-CC names it —
+> OR it is a DEMO: `demo: true` in its manifest entry AND a link to
+> `<name>/game.html` in this README.**
 
-That is the whole rule, and it is enforced four ways at once:
+⚖ **The second clause arrived on 2026-09-07** (user ruling, SEEDLING ORIGINAL WASM
+slice W1) and it exists because `seedling_original` cannot satisfy the first. Every
+other build here is pinned because an instrument DRIVES it; nothing in Archipelago-CC
+names the original game and nothing should — it is here to be played, by a person, at
+a URL. So a demo build is admitted by a different pair of facts, and the README link
+is the load-bearing half of it: `demo: true` on its own would be the manifest
+admitting itself, whereas the link is the thing a reader actually follows, in a file
+the gate does not write. A `demo: true` that this README links nowhere is reported as
+a problem in its own right — a demo nobody can reach — rather than as "retire it".
+`check-seedling-wasm-pins.mjs` prints WHICH of the two reasons admitted each build on
+every run.
+
+Either way the rule is enforced four ways at once:
 
 | Where | What it says |
 |---|---|

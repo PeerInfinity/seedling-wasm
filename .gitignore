@@ -12,6 +12,14 @@
 # agreement between this whitelist, builds.json, and what git tracks here, so
 # adding a line without the manifest entry (or vice versa) reds a CI row.
 #
+# ⚖ AND SINCE 2026-09-07 THE RULE HAS A SECOND CLAUSE (user ruling 4): a build
+# may also be pinned as a DEMO — `demo: true` in its builds.json entry PLUS a
+# link to `<name>/game.html` in the README below. Nothing in Archipelago-CC
+# names `seedling_original`, and nothing should: it is the game a person plays,
+# not a build an instrument drives. The README link is the load-bearing half —
+# `demo: true` alone would be the manifest admitting itself — and the gate
+# prints which of the two reasons admitted each build on every run.
+#
 # To ADD a build:    a `!/<name>/` line here + a builds.json entry + the dir.
 # To RETIRE one:     delete both; the directory may stay on disk, untracked.
 
@@ -25,3 +33,6 @@
 !/seedling_bot_ap_p4b/
 !/seedling_bot_ap_p4c/
 !/seedling_bot_ap_p4d/
+
+# ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
+!/seedling_original/
