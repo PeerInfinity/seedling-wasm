@@ -22,12 +22,23 @@
 #
 # To ADD a build:    a `!/<name>/` line here + a builds.json entry + the dir.
 # To RETIRE one:     delete both; the directory may stay on disk, untracked.
+#
+# The law in full — the four enforcement points, the four spellings a reference
+# can take, and how to retire a build — is docs/pin-policy.md.
 
 /*
 !/.gitignore
 !/LICENSE
 !/README.md
 !/builds.json
+
+# ⛓ PROSE, NOT A BUILD (SEEDLING ORIGINAL WASM slice W2, 2026-09-07): the README
+# kept the whole law and the whole history inline and had grown to 199 lines, so
+# both moved into docs/. This line is the whitelist admitting a directory that
+# holds NO payload — Archipelago-CC's check-seedling-wasm-pins.mjs declares the
+# same two files, so `docs/` is never read as a build and a THIRD file appearing
+# there reds rather than being mistaken for one.
+!/docs/
 
 # ── the pinned builds ───────────────────────────────────────────────────
 !/seedling_bot_ap_p4b/
