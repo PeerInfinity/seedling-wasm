@@ -36,6 +36,38 @@ run back to back with nothing edited in between, and all 602 check lines agree i
 text but for 13 — each a free-running clock whose control arm, the same build re-run, moved at
 least as far. No expectation, tape or battery byte moved.
 
+## The rebuild of 2026-09-12
+
+⛓ **Two of the four builds were rebuilt on a newer SWFRecomp-CC runtime, and the AS3 did not
+move.** `seedling_bot_ap_p4d` (the default) and `seedling_original` (the demo) were recompiled on
+runtime `254145a5b`; `seedling_bot_ap_p4b` and `seedling_bot_ap_p4c` were deliberately NOT — they
+are the `arm` and `apitem` negative controls, and whether the tests that drive them are worth
+keeping multiple runtimes for is a review the repository owner has reserved. So this repository now
+holds builds from two runtimes on purpose, and each entry's `source.recompiler` says which.
+
+⛓ **What it bought.** The previous runtime lost its WebGPU device at the first canvas present on
+headless SwiftShader and then parked every other frame for ~4.4 s, and its 283-layer bitmap texture
+array was over SwiftShader's 256-layer limit, so the canvas was black even when the device
+survived. Measured on the same box, 40 s runs, old build against new: "WebGPU error" console lines
+**3279 → 0**, canvas distinct colours **1 → 44** on the bot build, and — on the demo — the whole
+opening sequence readable by screenshot for the first time headless: the Newgrounds intro at 5 s,
+the *"A GAME BY CONNOR ULLMANN"* splash at 20 s, and *"Seedling — press any key to play"* at 60 s.
+The 2026-09-07 entry for that build records the opposite result ("THE HEADLESS ARM CANNOT ANSWER
+THIS": 46 frames in 95 s, 46 page errors, an all-black screenshot) and had to move its boot proof
+to real-GPU Windows Chrome. That is the measurement this rebuild changed.
+
+⛓ **Two headless modes now, and which is faster flipped.** Without `--use-vulkan=swiftshader` and
+the `Vulkan` feature the device is still lost — but the new runtime SURVIVES it: every WebGPU call
+becomes a valid no-op, `window.__swfGpu` reads `{lost:1, stalls:0}`, and the game ticks at ~26
+frames/s with no pixels and no frame over one second. WITH those two flags the device stays alive
+and SwiftShader rasterises on the CPU, which is real pixels at roughly half the rate. Neither is a
+mode of the wasm; both are Chromium.
+
+⛔ **The md5s in `builds.json` pin artifacts, not sources.** A control build at the identical AS3
+commit, minutes apart, produced a SWF 55 bytes different and — after the AP injection, which yields
+exactly the same total length — **467,446 of 9,743,894 bytes** different. mxmlc is not
+reproducible, and that number is measured here rather than asserted.
+
 ## Which build was the default, and when
 
 The DEFAULT is whichever build `WASM_PAGE` and the `SEEDLING_PAGE` defaults name; the table in
