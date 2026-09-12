@@ -68,6 +68,31 @@ commit, minutes apart, produced a SWF 55 bytes different and — after the AP in
 exactly the same total length — **467,446 of 9,743,894 bytes** different. mxmlc is not
 reproducible, and that number is measured here rather than asserted.
 
+## The retirement of 2026-09-12
+
+⛓ **`seedling_bot_ap_p4b` and `seedling_bot_ap_p4c` retired, and so did the tests that existed to
+drive them.** They were pinned as NEGATIVE CONTROLS, not by use: p4b declared no `arm` (the build
+that armed beside the world swap, so two dead-frame corrections in Archipelago-CC had a build on
+which their "does not arm after the swap" branch was taken), and p4c declared no `apitem` (the build
+whose XML loop ignores an `<apitem>` element, so a rewritten AP tile read EMPTY there). The
+repository owner reviewed whether those tests were worth keeping two more builds — and, since the
+rebuild above, two runtimes — for, and ruled:
+
+> *"I'm not aware of any reason to care whether the code behaves correctly with the old wasm
+> builds. I think it just needs to behave correctly with the new build."*
+>
+> *"Yes, let's add the retirement slice to the plan. And let's still keep seedling_original."*
+
+⇒ the host supports ONE bot build, `seedling_bot_ap_p4d`, plus `seedling_original`, which is the
+demo and not a test control. Before anything was deleted, each branch that only the controls
+reached was proved unreachable on p4d by a mutant in Archipelago-CC (SEEDLING HEADLESS WEBGPU slice
+R2); then the branches, the two control roles and the two builds went together. ⛔ **The cost,
+stated once:** a host regression in an absent-capability branch is undetectable from here on — by
+design, because no shipped build reaches one.
+
+⚠ **Deleting the directories does not shrink this repository.** Every byte of both builds is
+still in history (see *History size* below); the tree gets smaller, the clone does not.
+
 ## Which build was the default, and when
 
 The DEFAULT is whichever build `WASM_PAGE` and the `SEEDLING_PAGE` defaults name; the table in
@@ -79,8 +104,8 @@ the README reads it out of `builds.json` rather than out of anyone's memory. The
 - `seedling_bot_ap_p4d` has held them since.
 
 ⛓ A default flip is a DERIVED list and never a typed one — P2's moved **53 tracked files / 69
-lines**. Both of the older builds stayed pinned afterwards, and not out of sentiment: each is
-the negative half of a pair, which is what the `role` column in the README's table records.
+lines**. Both of the older builds stayed pinned afterwards, and not out of sentiment: each was
+the negative half of a pair — until the retirement of 2026-09-12 above.
 `builds.json`'s per-build `namedBy` carries the measured detail, with the command that produced
 each number beside it.
 

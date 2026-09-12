@@ -21,13 +21,9 @@ listed because a build nobody can open is a build nobody can check.
 |---|---|---|---|---|---|
 | `seedling_original` | the ORIGINAL game — no bridge, no bot, no Archipelago | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_original/game.html) | `demo` | [`main@826ba77`](https://github.com/PeerInfinity/Seedling/commit/826ba77d67a4e6cc826204faa8948ecfaa1c00fa) | [`254145a`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/254145a5b61728677da2f19d196541043d98e1e5) |
 | `seedling_bot_ap_p4d` | the current bot build — the arm-time fix plus Archipelago’s `APItem` | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4d/game.html) | `default` | [`ap-m1@a0ec864`](https://github.com/PeerInfinity/Seedling/commit/a0ec86421faa6c2d340135124104c09c473df280) | [`254145a`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/254145a5b61728677da2f19d196541043d98e1e5) |
-| `seedling_bot_ap_p4c` | the bot build BEFORE `APItem` — declares `arm`, no `apitem` | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4c/game.html) | `apitem-control` | [`bot@d4f1f37`](https://github.com/PeerInfinity/Seedling/commit/d4f1f379515a5699aa1219622b6a0cf261943a78) | [`06f3d87`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/06f3d87d295b03b44b94221d38594612ecda4ff5) |
-| `seedling_bot_ap_p4b` | the bot build BEFORE the arm-time fix — the only one declaring no `arm` | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4b/game.html) | `arm-control` | [`bot@c2119e6`](https://github.com/PeerInfinity/Seedling/commit/c2119e6749578aa5eb70e625ac327f3a690e1441) | [`06f3d87`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/06f3d87d295b03b44b94221d38594612ecda4ff5) |
 
 - `demo` — here to be PLAYED, by a person, at a URL — no instrument drives it
 - `default` — what the app and the instruments load — `WASM_PAGE` and the `SEEDLING_PAGE` defaults name it
-- `apitem-control` — the negative half of the `apitem` pair — pinned so a build WITHOUT Archipelago’s placement pickup exists to compare against
-- `arm-control` — the negative half of the `arm` pair — pinned so the dead-frame corrections have a build that does NOT arm after the swap
 
 <!-- GENERATED:seedling-wasm-builds END -->
 
