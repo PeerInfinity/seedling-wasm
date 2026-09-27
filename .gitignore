@@ -42,6 +42,9 @@
 
 # ── the pinned builds ───────────────────────────────────────────────────
 !/seedling_bot_ap_p4d/
+# ⛓ the CANDIDATE (R9 slice P4E, 2026-09-27): p4d + hold-after-latch + the
+# optional pickup @tag, pinned beside the default until the default move is ruled.
+!/seedling_bot_ap_p4e/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/

@@ -47,6 +47,42 @@
       }
     },
     {
+      "name": "seedling_bot_ap_p4e",
+      "summary": "the CANDIDATE — p4d plus hold-after-latch and an optional `@tag` on the three untagged pickups",
+      "role": "candidate",
+      "capabilities": [
+        "arm",
+        "apitem",
+        "hold",
+        "tag"
+      ],
+      "js": "seedling_bot_ap_p4e.js",
+      "wasm": "seedling_bot_ap_p4e.wasm",
+      "jsMd5": "a9f560e6b333f17baa510784533d3524",
+      "wasmMd5": "99cd4c138292b3f48d22c210525c2726",
+      "gameHtmlMd5": "33e1d27111d4ac952d14cf2873c20765",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3649,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_bot_ap_p4e.js": 149453,
+        "seedling_bot_ap_p4e.wasm": 34065181
+      },
+      "builtFrom": "⛓ BUILT 2026-09-27 (R9 slice P4E, ⚖ 72 (a′)) ON SWFRecomp-CC bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b — p4d's recompiler, UNCHANGED (a detached worktree ~/CC/SWFRecomp-CC-p4e; SWFRecomp-CC master is 46 commits past it and was not used). AS3: fork ~/CC/seedling branch `ap-m1` = p4d's a0ec86421f plus TWO commits — C1 `b2cb331` hold-after-latch (Bot.holding, read in Main.update; a tape_version 12 `hold: true` holds the room — no super.update(), no Music.update() — from the seam latch until botStart/botReset/botLoadLevels; botStatus `held`) and C4 `e1e6b24` an optional `@tag` on bosskey/totempart/seed (Game.optionalTag: absent reads -1, never int(\"\") = 0; collection writes Game.setPersistence(tag, false)). C2 (a clock-at-arm bridge property) and C3 (a post-drain seam readout) were NOT built: `arm.armed_at` already is the clock at arm on both paths, and with the mixer held there is no drain between the latch and the next botStart (kickoff §62). RECIPE (the R3 recipe): mxmlc via build_bot.sh (-omit-trace-statements=false) → inject.py → Seedling_bot_ap_p4e.swf 9,744,609 B (md5 547937a4dc344905bad48da3762d3f3b) → run-SWFRecomp.sh: 724 classes, 3918 methods, 3808 bodies, 0 verify failures, 504 SymbolClass bindings (the control: 3917/3807 — +1, Game.optionalTag) → FRESH=1 build_wasm_avm2.sh with the defaults, emcc 5.0.0 → deploy_wasm_avm2.sh. WALL 22m20s. ⛓ A CONTROL BUILD CAME FIRST: the unchanged a0ec864 through the same toolchain (seedling_bot_ap_p4ectl, never committed): SWF 9,743,894 B md5 94e5d101f55760c9b4dbf35920f60bf9 (≠ R1's da451bfb… — mxmlc is not reproducible), wasm 34,039,970 B (p4d 34,039,926); this build is +25,211 B over it. ⛓ CAPABILITIES MEASURED: `strings -n 3 <wasm>` — `hold must be a boolean` 1 here, 0 on p4d and on the control; `optionalTag` 1 here, 0 on both; `^arm$` 1 and `^apitem$` 1 as on p4d.",
+      "namedBy": [
+        "scripts/procgen/probe-seedling-hold.mjs — its `SEEDLING_PAGE` DEFAULT (spelling 3): the instrument that measures `hold` on the game (C1 the frozen clock and bodies, C2 `armed_at`, C3 the mixer), with p4d as its negative arm (the loader refuses tape_version 12).",
+        "Found by DATA, never by name: `check-seedling-ap-placement.mjs`'s C4 arms drive the entry that declares `tag` (pins row (h2) holds every gate to the lab's own build) — the vanilla set with the level-29 boss key tagged by `placementTagId`: ONE `pendingCheck` here, none untagged, none on p4d.",
+        "Driven by explicit selection everywhere else — `SEEDLING_PAGE=seedling_bot_ap_p4e` for every instrument that composes the default, `?wasm=seedling_bot_ap_p4e` on watch.html (watchWasm.wasmPageFor), where the director reads `hold` from THIS entry and holds every window with a successor."
+      ],
+      "note": "R9 slice P4E — the CANDIDATE, pinned BESIDE p4d (the M1→P2 precedent: the default move is a separate ruling, priced in kickoff §62). Byte-inert by construction for every tape below version 12 and every vanilla level: `hold` is value-checked false below 12, and no vanilla .oel carries a tag on the three classes.",
+      "source": {
+        "repo": "PeerInfinity/Seedling",
+        "branch": "ap-m1",
+        "commit": "e1e6b24c5b6cee1c8a7dcfba1d2f726997117734",
+        "recompiler": "bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b"
+      }
+    },
+    {
       "name": "seedling_original",
       "summary": "the ORIGINAL game — no bridge, no bot, no Archipelago",
       "role": "demo",
