@@ -20,12 +20,13 @@ listed because a build nobody can open is a build nobody can check.
 | build | what it is | play | role | AS3 source | SWFRecomp-CC |
 |---|---|---|---|---|---|
 | `seedling_original` | the ORIGINAL game — no bridge, no bot, no Archipelago | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_original/game.html) | `demo` | [`main@826ba77`](https://github.com/PeerInfinity/Seedling/commit/826ba77d67a4e6cc826204faa8948ecfaa1c00fa) | [`bdf734c`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b) |
-| `seedling_bot_ap_p4d` | the current bot build — the arm-time fix plus Archipelago’s `APItem` | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4d/game.html) | `default` | [`ap-m1@a0ec864`](https://github.com/PeerInfinity/Seedling/commit/a0ec86421faa6c2d340135124104c09c473df280) | [`bdf734c`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b) |
-| `seedling_bot_ap_p4e` | the CANDIDATE — p4d plus hold-after-latch and an optional `@tag` on the three untagged pickups | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4e/game.html) | `candidate` | [`ap-m1@e1e6b24`](https://github.com/PeerInfinity/Seedling/commit/e1e6b24c5b6cee1c8a7dcfba1d2f726997117734) | [`bdf734c`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b) |
+| `seedling_bot_ap_p4e` | the current bot build — p4d plus hold-after-latch and an optional `@tag` on the three untagged pickups | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4e/game.html) | `default` | [`ap-m1@e1e6b24`](https://github.com/PeerInfinity/Seedling/commit/e1e6b24c5b6cee1c8a7dcfba1d2f726997117734) | [`bdf734c`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b) |
+| `seedling_bot_ap_p4d` | the CONTROL — the bot build WITHOUT `hold` and `tag`; the default until R9 slice DEF | [▶ play](https://peerinfinity.github.io/seedling-wasm/seedling_bot_ap_p4d/game.html) | `control` | [`ap-m1@a0ec864`](https://github.com/PeerInfinity/Seedling/commit/a0ec86421faa6c2d340135124104c09c473df280) | [`bdf734c`](https://github.com/PeerInfinity/SWFRecomp-CC/commit/bdf734c46c7ce4f2cb5466ac615cc6d884b4e51b) |
 
 - `demo` — here to be PLAYED, by a person, at a URL — no instrument drives it
 - `default` — what the app and the instruments load — `WASM_PAGE` and the `SEEDLING_PAGE` defaults name it
 - `candidate` — the NEXT default, pinned beside it — every capability the default has and more; driven by explicit selection (`SEEDLING_PAGE=<name>`, `?wasm=<name>`)
+- `control` — the NEGATIVE arm, pinned beside the default — it LACKS capabilities the default declares, so a gate can show what they remove; driven by name only where `check-seedling-wasm-pins.mjs` row (j) declares it, otherwise by override
 
 <!-- GENERATED:seedling-wasm-builds END -->
 

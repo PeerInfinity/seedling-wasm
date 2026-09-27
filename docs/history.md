@@ -129,7 +129,12 @@ the README reads it out of `builds.json` rather than out of anyone's memory. The
 - `seedling_bot_ap_p4b` held every default until **2026-08-26**;
 - `seedling_bot_ap_p4c` held them from then until **2026-08-30**, when EDITOR INTEGRATION
   slice P2 moved them (⚖ user: *"I want to make p4d the default"*);
-- `seedling_bot_ap_p4d` has held them since.
+- `seedling_bot_ap_p4d` held them from then until **2026-09-27**, when R9 slice DEF moved them
+  (⚖ user: *"I agree with those recommendations"* — licence: the CI full tier on p4e, 154 tapes
+  3745/0/46);
+- `seedling_bot_ap_p4e` has held them since. ⛓ **p4d stayed pinned, as `role: control`** — the
+  negative arm for `hold` and `tag`, the two capabilities p4e added — held by ONE line of
+  Archipelago-CC code and a pins-gate row keyed on the capability, not the name.
 
 ⛓ A default flip is a DERIVED list and never a typed one — P2's moved **53 tracked files / 69
 lines**. Both of the older builds stayed pinned afterwards, and not out of sentiment: each was
