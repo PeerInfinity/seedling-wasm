@@ -42,9 +42,11 @@
 
 # ── the pinned builds ───────────────────────────────────────────────────
 !/seedling_bot_ap_p4d/
-# ⛓ THE DEFAULT since R9 slice DEF (2026-09-27; built by P4E as the candidate):
-# p4d + hold-after-latch + the optional pickup @tag. p4d above is its CONTROL.
-!/seedling_bot_ap_p4e/
+# ⛓ THE DEFAULT since the seedling-wasm-leak L4 rebuild (2026-10-03): p4e's AS3
+# plus the cosmetic-RNG sites, the split-only shake jiggle, botHold and the
+# since-begin record, on the leak-fixed runtime. p4e is RETIRED (⚖ D2); p4d
+# above stays its CONTROL.
+!/seedling_bot_ap_p4f/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/

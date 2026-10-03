@@ -167,3 +167,33 @@ manifest entries and the README are the ones the pins update recorded.
 been assumed to cost). The number the shed brings a fresh clone down to is in the outer repository's record of this
 shed (Archipelago-CC, queue §5w and plan §21.3), measured on a clone of this commit. The prior heads stay reachable by
 SHA on GitHub for a while; nothing here was ever private.
+
+## The leak-fix rebuild of 2026-10-03 (p4e retired, p4f the default)
+
+⛓ **Why:** the wasm Seedling ran out of its 512 MiB arena after ~170 room swaps, and leaked ~9 KB per bridge call
+(Archipelago-CC `NewDocs/plans/seedling-wasm-leak-report.md`). The roots were in the runtime: immortal E4X (every
+parsed room XML retained), plus JSON / Array-growth / raw-scratch buffers never freed. Fixed in SWFRecomp-CC through
+`4c450f076`. All three builds were rebuilt on it (`FRESH=1`, emcc 5.0.0), as ONE ⚖ user-approved bundle together with
+the AS3 items below.
+
+- **`seedling_bot_ap_p4f`, the new DEFAULT:** fork `ap-m1` @ `f8d9bc1` = p4e's `e1e6b24` + 3′a (the shake and
+  `Orb.randVal` on the cosmetic RNG) + 3′c (a split-only deterministic shake) + 4a (`botHold`) + 4c (`sinceBegin`) +
+  a `botStatus.camera` readout + 3′b (the split ON by default). New capability words `freeze` and `sincebegin`.
+- **`seedling_bot_ap_p4d`, the control, and `seedling_original`, the demo:** rebuilt from their own SWF bytes. Every
+  moved byte is the toolchain's.
+- **`seedling_bot_ap_p4e`: RETIRED** (⚖ D2). p4d already covers the absent-`hold`/`tag` arms. Its directory stays on
+  developers' disks, untracked under the whitelist.
+
+⛓ **Measured on these builds** (headless):
+- logic-only `__swfGpu = {lost:1, stalls:0}`; pixels at 44 colours (p4f, p4d) and 1,555 (original, splash);
+  0 WebGPU error lines;
+- callbacks registered: p4f 15, p4d 14 (+`botHold`);
+- the leak and acceptance numbers are in the outer record.
+
+Sizes:
+
+| build | wasm before | wasm after |
+|---|---|---|
+| p4d | 34,039,926 B | 36,242,097 B |
+| original | 33,712,711 B | 35,793,537 B |
+| p4f | — | 36,303,978 B |
