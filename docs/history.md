@@ -213,8 +213,8 @@ took a NEW NAME by the p4d → p4e → p4f precedent.
 - **`seedling_bot_ap_p4g`, the new DEFAULT:** PeerInfinity/Seedling `r4-boss-report` @ `ccdf189` = p4f's `f8d9bc1` +
   the R4 commits: all seven bosses report locations; the Witch's dark sword and the Bob Boss's Fire are REPORTED
   (collecting grants nothing — the host grants, as for `APItem`); the Bob Boss fight always happens; the Totem of
-  Lacste waits for all five totem parts. ⛔ This game no longer grants Fire or the dark sword itself. No new
-  capability word.
+  Lacste waits for all five totem parts. ⛔ This game no longer grants Fire or the dark sword itself. A new
+  capability word: `bossreport`.
 - **`seedling_bot_ap_p4f`: RETIRED** (the D2 precedent): nothing drives a granting-boss build, and p4d already covers
   the absent-capability arms. Its directory stays on developers' disks, untracked under the whitelist.
 - **`seedling_bot_ap_p4d`, the control, and `seedling_original`, the demo:** rebuilt from their own SWF bytes on
