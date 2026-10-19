@@ -42,11 +42,11 @@
 
 # ── the pinned builds ───────────────────────────────────────────────────
 !/seedling_bot_ap_p4d/
-# ⛓ THE DEFAULT since the seedling-wasm-leak L4 rebuild (2026-10-03): p4e's AS3
-# plus the cosmetic-RNG sites, the split-only shake jiggle, botHold and the
-# since-begin record, on the leak-fixed runtime. p4e is RETIRED (⚖ D2); p4d
-# above stays its CONTROL.
-!/seedling_bot_ap_p4f/
+# ⛓ THE DEFAULT since the wasm rebuild R2 (2026-10-19): p4f's AS3 plus the R4
+# boss reports (all seven bosses report locations; the dark sword and Fire are
+# granted by the host), on the frame-leak-fixed runtime with the AudioWorklet
+# output. p4f is RETIRED (the D2 precedent); p4d above stays its CONTROL.
+!/seedling_bot_ap_p4g/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/

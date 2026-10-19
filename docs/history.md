@@ -132,9 +132,11 @@ the README reads it out of `builds.json` rather than out of anyone's memory. The
 - `seedling_bot_ap_p4d` held them from then until **2026-09-27**, when R9 slice DEF moved them
   (⚖ user: *"I agree with those recommendations"* — licence: the CI full tier on p4e, 154 tapes
   3745/0/46);
-- `seedling_bot_ap_p4e` has held them since. ⛓ **p4d stayed pinned, as `role: control`** — the
+- `seedling_bot_ap_p4e` held them from then until **2026-10-03**. ⛓ **p4d stayed pinned, as `role: control`** — the
   negative arm for `hold` and `tag`, the two capabilities p4e added — held by ONE line of
-  Archipelago-CC code and a pins-gate row keyed on the capability, not the name.
+  Archipelago-CC code and a pins-gate row keyed on the capability, not the name;
+- `seedling_bot_ap_p4f` held them from then (the leak-fix rebuild below) until **2026-10-19**;
+- `seedling_bot_ap_p4g` has held them since (the wasm rebuild R2 below).
 
 ⛓ A default flip is a DERIVED list and never a typed one — P2's moved **53 tracked files / 69
 lines**. Both of the older builds stayed pinned afterwards, and not out of sentiment: each was
@@ -197,3 +199,32 @@ Sizes:
 | p4d | 34,039,926 B | 36,242,097 B |
 | original | 33,712,711 B | 35,793,537 B |
 | p4f | — | 36,303,978 B |
+
+## The wasm rebuild R2 of 2026-10-19 (p4f retired, p4g the default)
+
+⛓ **Why** (⚖ the repository owner, 2026-10-19: *"I agree to go through the process required to use the fixed build"*,
+scope *"Runtime + all queued items"*): the wasm Seedling still ran out of its arena after ~150 room swaps on p4f. The
+root was a second runtime leak — every AVM2 activation's vtable growth was never freed — fixed in SWFRecomp-CC
+`c1fa89bc2`. The same runtime pin `344c85a16` (SWFRecomp-CC `master`) brings the AudioWorklet output `0cb5464e5` (a
+stalled main thread now fades to silence instead of looping the last ~93 ms of sound), the master's graphical fixes
+and the ExternalInterface provider rework `f5de34ce8`. The game's AS3 moved too (the R4 boss reports), so the default
+took a NEW NAME by the p4d → p4e → p4f precedent.
+
+- **`seedling_bot_ap_p4g`, the new DEFAULT:** PeerInfinity/Seedling `r4-boss-report` @ `ccdf189` = p4f's `f8d9bc1` +
+  the R4 commits: all seven bosses report locations; the Witch's dark sword and the Bob Boss's Fire are REPORTED
+  (collecting grants nothing — the host grants, as for `APItem`); the Bob Boss fight always happens; the Totem of
+  Lacste waits for all five totem parts. ⛔ This game no longer grants Fire or the dark sword itself. No new
+  capability word.
+- **`seedling_bot_ap_p4f`: RETIRED** (the D2 precedent): nothing drives a granting-boss build, and p4d already covers
+  the absent-capability arms. Its directory stays on developers' disks, untracked under the whitelist.
+- **`seedling_bot_ap_p4d`, the control, and `seedling_original`, the demo:** rebuilt from their own SWF bytes on
+  `344c85a16` (in the commit after this one's first).
+
+⛓ **Measured on p4g** (headless, 40 s per mode, beside p4f on the same box): logic-only `__swfGpu = {lost:1,
+stalls:0}`; pixels 44 colours at 5/20/39 s (p4f 44; the frame at 5 s pixel-identical, the later ones differ only in
+the grass/water animation phase); 15 `callback registered:` lines (p4f 15); 0 WebGPU error lines; audio path
+`worklet`. The starve probe (a 1500 ms main-thread stall, the real output recorded on the audio thread): sound for
+the queued ~116–174 ms, then silence, **0 replayed quanta in 3 runs** (the forced ScriptProcessor control on the same
+build: audible through the whole stall, ~500 replayed quanta per run). The leak and gate numbers are in the outer
+record.
+

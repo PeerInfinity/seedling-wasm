@@ -43,8 +43,8 @@
       }
     },
     {
-      "name": "seedling_bot_ap_p4f",
-      "summary": "the current bot build — p4e plus botHold, the since-begin record, a camera readout, the split ON by default with a deterministic shake under it, and the last two cosmetic draws on the cosmetic RNG, on the leak-fixed runtime",
+      "name": "seedling_bot_ap_p4g",
+      "summary": "the current bot build — p4f plus the R4 boss REPORTS (all seven bosses report locations; the Witch's dark sword and the Bob Boss's Fire are locations the host grants; the Totem of Lacste waits for all five totem parts), on the frame-leak-fixed runtime with the AudioWorklet output",
       "role": "default",
       "capabilities": [
         "arm",
@@ -54,28 +54,28 @@
         "freeze",
         "sincebegin"
       ],
-      "js": "seedling_bot_ap_p4f.js",
-      "wasm": "seedling_bot_ap_p4f.wasm",
-      "jsMd5": "69293a71aded1970331dceeca2bb70e5",
-      "wasmMd5": "fd6ae47d79ed78f052e4f321bb461b03",
-      "gameHtmlMd5": "344e05990baf74a0e4d662878e200e0d",
+      "js": "seedling_bot_ap_p4g.js",
+      "wasm": "seedling_bot_ap_p4g.wasm",
+      "builtFrom": "⛓ BUILT 2026-10-19 (Archipelago-CC slice seedling-js-wasm-rebuild-r2, R7 of the wasm rebuild R2, ⚖ user-approved: \"Runtime + all queued items\") ON SWFRecomp-CC 344c85a166c327c48b0361a5ef7e68983e4f48aa. AS3: PeerInfinity/Seedling branch `r4-boss-report` @ ccdf189776471fa57be8c0568c6e881a2d5acc18 = p4f's f8d9bc1 plus three commits: c87e4f4 (BobBoss/FallRockLarge/Fire: the kill and the Fire drop REPORT locations — BobBoss.KILLED_TAG 3, Fire.BOSS_DROP_TAG 4; no Player.hasFire guard, the fight always happens), 0eda15f (Witch/DarkSword: the sword REPORTS its location — DarkSword.WITCH_TAG 1; collecting grants nothing, the HOST grants), ccdf189 (BossTotem: the fight waits for Player.hasAllTotemParts()). ⛔ This game no longer GRANTS Fire or the dark sword. RECIPE: build_bot.sh's mxmlc flags (-strict, -omit-trace-statements=false) from a detached worktree of the fork → inject.py → Seedling_bot_ap_p4g.swf 9,746,045 B md5 dc2e92bc43aeecbceee4acc53082d905 → SWFRecomp: 724 classes, 3922 methods, 3812 bodies, 0 verify failures, 504 SymbolClass bindings (equal to p4f's) → FRESH=1 build_wasm_avm2.sh with the defaults (ABC_OPT=-O1 RT_OPT=-O2 MOCK_DATE_TIME=981152406000 SWF_URL=file:///test.swf), emcc 5.0.0 → deploy_wasm_avm2.sh. Wall 2026-10-19 21:36:03Z→22:00:28Z (24m25s; recompile 11 s). ⛓ A CONTROL SWF CAME FIRST: unchanged f8d9bc1 through the same toolchain, never committed: 9,745,840 B md5 0ad21b50c901be23e7a91dac03aec745 (p4f's own was 9,745,839 B — mxmlc is not reproducible). ⛓ CAPABILITIES MEASURED (`strings -n 3`): ^arm$ 1, ^apitem$ 1, \"hold must be a boolean\" 1, optionalTag 1, \"botHold takes\" 1, held_at_begin 1, shakeJiggle 1; the R4 markers KILLED_TAG / BOSS_DROP_TAG / WITCH_TAG 1 each (p4f: 0). THE RECOMPILER DELTA 4c450f076..344c85a16: the frame-leak fix c1fa89bc2 (avm2_class.c: an activation's vtable growth is freed — the per-frame floor climb behind the wasm OOM at ~150 swaps), the audio-worklet output 0cb5464e5 (audio_output_web.c: AudioWorkletNode + a 2048-frame FIFO, an underrun fades to SILENCE and never replays; the ScriptProcessor stays as the fallback, SWF_AUDIO_SCRIPTPROCESSOR=true forces it; pcm_position keeps pace through a stall), graphical 38cf9b1a0 e62daeb6f 1edcde2e1 d192a4778 e412dd55f 5edcc1a5d f0f8986ac 9821a086a 801451eb5, AVM2 5367e2b33 f5de34ce8 (the ExternalInterface provider rework — the bridge path) b78134bd1 e783f14e5.",
+      "namedBy": [
+        "⛓ THE DEFAULT (wasm rebuild R2, 2026-10-19): every reference that named seedling_bot_ap_p4f as the current default moves here in the same gitlink unit."
+      ],
+      "note": "p4f (the previous default) is RETIRED by the D2 precedent: nothing drives a granting-boss build, and p4d already covers the absent-capability arms.",
+      "source": {
+        "repo": "PeerInfinity/Seedling",
+        "branch": "r4-boss-report",
+        "commit": "ccdf189776471fa57be8c0568c6e881a2d5acc18",
+        "recompiler": "344c85a166c327c48b0361a5ef7e68983e4f48aa"
+      },
+      "jsMd5": "76f8220724e9ce92ce527898100fecb6",
+      "wasmMd5": "9da70f123ab9017bf4ad55b9a1754e5c",
+      "gameHtmlMd5": "8acddfeaa08ac6dc84f282963dbfb4f7",
       "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
       "bytes": {
         "game.html": 3649,
         "swf_bridge_avm2.js": 4725,
-        "seedling_bot_ap_p4f.js": 149453,
-        "seedling_bot_ap_p4f.wasm": 36303978
-      },
-      "builtFrom": "⛓ BUILT 2026-10-03 (seedling-wasm-leak L4, the ⚖ user-approved rebuild bundle) ON SWFRecomp-CC 4c450f076e8253c2e5fdc201a4b7cba2b51b6ad3 (the leak fixes). AS3: fork ~/CC/seedling branch `ap-m1` @ f8d9bc1f60714f457aaf629beceea797de194b69 = p4e's e1e6b24 plus six commits: a474a68 (3′a: the shake jiggle and Orb.randVal → Rng.cos()), 0869ede (3′c: under rng.split the jiggle is Game.shakeJiggle(Game.time, axis), no draw), 3c5471e (4a: botHold(\"on\"|\"off\") — a host freeze that moves no state), f02b847 (4c: botSeam().sinceBegin), d9b4e25 (botStatus.camera {x, y, shake} — 3′c's witness, ⚖ option (a)), f8d9bc1 (3′b: Rng.split ON by default, ⚖ re-ruled 2026-10-04 option 2; null-hook fallback; botReset restores true). 4b was skipped (not a one-liner). RECIPE: build_bot.sh (mxmlc -strict, -omit-trace-statements=false) → inject.py → Seedling_bot_ap_p4f3.swf 9,745,839 B md5 07150da0d10d041156e34d54be92b9bd → SWFRecomp: 724 classes, 3922 methods, 3812 bodies, 0 verify failures (p4e: 3918/3808; +4 = shakeJiggle, botHold, sinceBeginStep, Main.render) → FRESH=1 build_wasm_avm2.sh with the defaults, emcc 5.0.0 → deploy_wasm_avm2.sh. Wall 2026-10-04 00:49→01:21Z (the earlier links of this name, without the readout and the flip, were superseded and never committed). ⛓ A CONTROL SWF CAME FIRST: unchanged e1e6b24 through the same toolchain, never committed: 9,744,608 B (p4e's own was 9,744,609 — mxmlc is not reproducible). ⛓ CAPABILITIES MEASURED (`strings -n 3`): ^arm$ 1, ^apitem$ 1, \"hold must be a boolean\" 1, optionalTag 1, \"botHold takes\" 1, held_at_begin 1, shakeJiggle 1 (p4d: arm/apitem only; original: none).",
-      "namedBy": [
-        "⛓ THE DEFAULT (seedling-wasm-leak L4 ⚖ D2, 2026-10-03): every reference that named seedling_bot_ap_p4e moves here in the same gitlink unit."
-      ],
-      "note": "⛓ `freeze` = botHold, `sincebegin` = botSeam().sinceBegin (⚖ D3). p4e (the previous default) is RETIRED by ⚖ D2: p4d already covers the absent-hold/absent-tag arms.",
-      "source": {
-        "repo": "PeerInfinity/Seedling",
-        "branch": "ap-m1",
-        "commit": "f8d9bc1f60714f457aaf629beceea797de194b69",
-        "recompiler": "4c450f076e8253c2e5fdc201a4b7cba2b51b6ad3"
+        "seedling_bot_ap_p4g.js": 155225,
+        "seedling_bot_ap_p4g.wasm": 36540450
       }
     },
     {
