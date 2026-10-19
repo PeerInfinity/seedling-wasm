@@ -218,7 +218,8 @@ took a NEW NAME by the p4d → p4e → p4f precedent.
 - **`seedling_bot_ap_p4f`: RETIRED** (the D2 precedent): nothing drives a granting-boss build, and p4d already covers
   the absent-capability arms. Its directory stays on developers' disks, untracked under the whitelist.
 - **`seedling_bot_ap_p4d`, the control, and `seedling_original`, the demo:** rebuilt from their own SWF bytes on
-  `344c85a16` (in the commit after this one's first).
+  `344c85a16`. Every moved byte is the toolchain's. Measured: p4d logic-only `{lost:1, stalls:0}`, pixels 44
+  colours, 14 callbacks; the original 0 callbacks, its intro at 5 s (11 colours) and the splash (803) by 39 s.
 
 ⛓ **Measured on p4g** (headless, 40 s per mode, beside p4f on the same box): logic-only `__swfGpu = {lost:1,
 stalls:0}`; pixels 44 colours at 5/20/39 s (p4f 44; the frame at 5 s pixel-identical, the later ones differ only in
@@ -228,3 +229,10 @@ the queued ~116–174 ms, then silence, **0 replayed quanta in 3 runs** (the for
 build: audible through the whole stall, ~500 replayed quanta per run). The leak and gate numbers are in the outer
 record.
 
+Sizes:
+
+| build | wasm before | wasm after |
+|---|---|---|
+| p4d | 36,242,097 B | 36,474,542 B |
+| original | 35,793,537 B | 35,992,905 B |
+| p4g | — (p4f 36,303,978 B) | 36,540,450 B |
