@@ -122,6 +122,49 @@
       }
     },
     {
+      "name": "seedling_bot_ap_p4h",
+      "summary": "the FINAL p4h candidate — p4g plus deterministic boss draws (L57/L112), AP chests that are Solid and open from below, tape v13 secondaries, botActivators and the checkpoint readout, on the runtime with the SharedObject host hook (`sosave`); not the default",
+      "role": "candidate",
+      "capabilities": [
+        "arm",
+        "apitem",
+        "hold",
+        "tag",
+        "freeze",
+        "sincebegin",
+        "bossreport",
+        "secondaries",
+        "apchest",
+        "activators",
+        "checkpoint",
+        "bossdraws",
+        "sosave"
+      ],
+      "js": "seedling_bot_ap_p4h.js",
+      "wasm": "seedling_bot_ap_p4h.wasm",
+      "builtFrom": "⛓ BUILT 2026-11-22 (Archipelago-CC slice rules-p4h-rc1, the FINAL build after rc1, ⚖ Robert 2026-11-22: \"I approve the rebuild, but I also want to include the other changes that were waiting for the next wasm build.\") ON SWFRecomp-CC master 746c394898ffceb55caf9f970515677ae891c798 (a fresh detached worktree; cmake Release) = rc1's c2a423d3d plus 746c39489 (RE3 (i): the AVM2 SharedObject host hook — Module.swfSharedObjectHost and the avm2_so_reload / avm2_so_flush_all exports; with no host hook set it behaves as before). AS3: PeerInfinity/Seedling branch `p4h-as3` @ 169247c4c4ca0d1958b95c6ebe2d5f43f7ca9692 = p4g's ccdf189776 (fast-forward) plus six commits: 0ea17b675a (a) deterministic boss draws, option A at all 9 sites (new Pattern.vdc; FinalBoss/RockFall/TentacleBeast read no Math.random), 0451516252 (b) Pickups/APChest — an <apitem kind=\"chest\"> builds a Solid chest opened only from the line under it (Chest.as's probe), checked at the open frame, no checkBySeal, no SealPiece, no Rng draw; Cover treats it as a Chest, 2498270355 (c) tape_version 13 `secondaries: [{t,slot}]` (gate 1..8, 12, 13), a8f1d5d316 (f) botActivators() read-only (locks/covers/buttons + chests), e4244eabc0 (g) botStatus.checkpoint + checkpoint_at_load, 169247c4c4 (d′) pinFault returns once the tape finished. RECIPE: build_bot.sh's mxmlc flags (-strict 0 warnings, -omit-trace-statements=false) from a detached worktree → inject.py → Seedling_bot_ap_p4h.swf 9,750,279 B md5 bad29886f7e3b3f99f4703edd5fa974f — ⛓ THE SAME SWF BYTES AS seedling_bot_ap_p4h_rc1 (no second mxmlc run: mxmlc is not reproducible, so reusing the bytes makes every p4h-vs-rc1 difference the recompiler's) → SWFRecomp: 727 classes, 3948 methods, 3838 bodies, 0 verify failures, 505 SymbolClass bindings (p4g: 724 / 3922 / 3812 / 0 / 504 — the +3 classes are Pattern, Pickups/APChest and its script; +1 binding APChest) → FRESH=1 build_wasm_avm2.sh with the defaults (ABC_OPT=-O1 RT_OPT=-O2 MOCK_DATE_TIME=981152406000 SWF_URL=file:///test.swf), emcc 5.0.0 → deploy_wasm_avm2.sh, under flock /tmp/swfrecomp-cpu.lock, LOCAL. Wall 2026-11-22 16:39:05Z→16:59:34Z (20m29s, recompile + FRESH=1 wasm + deploy; the recompiler's own cmake build before it). ⛓ A CONTROL SWF CAME FIRST: unchanged ccdf189776 through the same toolchain, never committed: 9,746,045 B md5 c54f46bade09af125f013809d4b99c0b (p4g's own: 9,746,045 B md5 dc2e92bc43aeecbceee4acc53082d905 — mxmlc is not reproducible). ⛓ CAPABILITIES MEASURED (`strings -n 3`): ^arm$ 1, ^apitem$ 1, \"hold must be a boolean\" 1, optionalTag 1, \"botHold takes\" 1, held_at_begin 1, shakeJiggle 1, KILLED_TAG / BOSS_DROP_TAG / WITCH_TAG 1 each (all as p4g); NEW: botActivators 1, checkpoint_at_load 1, \"secondaries must be an array\" 1, \"12 or 13\" 1, APChest 3 (p4g 0 for all five); and the hook: avm2_so_reload 1 / avm2_so_flush_all 1 in the wasm, swfSharedObjectHost 5 in the js (rc1 0 for all three).",
+      "namedBy": [
+        "⚠ NOTHING in Archipelago-CC names this build yet (rc1 is published on a seedling-wasm BRANCH only; no gitlink points at it). Driven by explicit selection: `SEEDLING_PAGE=seedling_bot_ap_p4h_rc1`, `?wasm=seedling_bot_ap_p4h_rc1`. The fidelity port and the mirror slices build against it; the outer unit that names it (and declares the new capability words) is theirs."
+      ],
+      "note": "rules-p4h-rc1 — the FINAL p4h, a `candidate` pinned beside the default p4g, which is untouched. The six capability words after p4g's seven are PROPOSED here (`sosave` agreed with slice sdc-wasm-save-host, whose branch reads it as SO_SAVE_CAPABILITY) and are not yet in Archipelago-CC's WASM_BUILD_CAPABILITIES: `secondaries` (tape_version 13), `apchest` (an <apitem kind=\"chest\"> is a Solid chest opened from below), `activators` (botActivators), `checkpoint` (botStatus.checkpoint / checkpoint_at_load), `bossdraws` (the 9 L57/L112 gameplay draws are fixed patterns), `sosave` (Module.swfSharedObjectHost + avm2_so_reload / avm2_so_flush_all, SWFRecomp-CC >= 746c39489). Byte-inert outside L57/L112 for every tape below version 13 on a set without kind=\"chest\" (the boss-draws report §2; measured on a seeded sample).",
+      "source": {
+        "repo": "PeerInfinity/Seedling",
+        "branch": "p4h-as3",
+        "commit": "169247c4c4ca0d1958b95c6ebe2d5f43f7ca9692",
+        "recompiler": "746c394898ffceb55caf9f970515677ae891c798"
+      },
+      "jsMd5": "baca69965cb1381b8be746ea862c948e",
+      "wasmMd5": "5a593efb04a31b36a7995c765f38eca6",
+      "gameHtmlMd5": "fa2f6810573300e8507bf33a902a5a63",
+      "bridgeMd5": "9fbbf1bbcbd145ae28a81f8628a7ef89",
+      "bytes": {
+        "game.html": 3649,
+        "swf_bridge_avm2.js": 4725,
+        "seedling_bot_ap_p4h.js": 156563,
+        "seedling_bot_ap_p4h.wasm": 36526515
+      }
+    },
+    {
       "name": "seedling_original",
       "summary": "the ORIGINAL game — no bridge, no bot, no Archipelago",
       "role": "demo",

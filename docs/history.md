@@ -254,3 +254,17 @@ names the build, and the words are unknown) until the outer unit that adopts it 
 | build | wasm |
 |---|---|
 | p4h_rc1 | 36,519,195 B (p4g 36,540,450 B) |
+
+### …and the final p4h, the same day
+
+⛓ **`seedling_bot_ap_p4h`, a `candidate`, on the same branch:** rc1's SWF bytes, unchanged (md5
+`bad29886f7e3b3f99f4703edd5fa974f`; no second mxmlc run, so every byte that moved is the recompiler's), on
+SWFRecomp-CC `746c39489` = rc1's `c2a423d3d` plus the AVM2 SharedObject host hook (`Module.swfSharedObjectHost`,
+the `avm2_so_reload` / `avm2_so_flush_all` exports; with no host hook set it behaves as before). Its capabilities are
+rc1's plus `sosave`, the word the save-host slice reads. Measured against rc1 on the same 39 tape rows, one fresh page
+each: the drain stream, the seam latch, the cleared set and the hits are identical on every row, and p4g ↔ p4h are
+identical on the 12-tape seeded sample outside L57/L112.
+
+| build | wasm |
+|---|---|
+| p4h | 36,526,515 B |

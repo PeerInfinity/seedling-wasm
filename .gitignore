@@ -50,6 +50,9 @@
 # ⛓ THE p4h RELEASE CANDIDATE 1 (rules-p4h-rc1, 2026-11-22): a `candidate` pinned BESIDE
 # the default p4g, published on the seedling-wasm branch p4h-rc1 only.
 !/seedling_bot_ap_p4h_rc1/
+# ⛓ THE FINAL p4h (rules-p4h-rc1, 2026-11-22): rc1's SWF bytes on SWFRecomp-CC 746c39489
+# (the SharedObject host hook, `sosave`); a `candidate` beside the default p4g.
+!/seedling_bot_ap_p4h/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/
