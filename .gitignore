@@ -47,6 +47,9 @@
 # granted by the host), on the frame-leak-fixed runtime with the AudioWorklet
 # output. p4f is RETIRED (the D2 precedent); p4d above stays its CONTROL.
 !/seedling_bot_ap_p4g/
+# ⛓ THE p4h RELEASE CANDIDATE 1 (rules-p4h-rc1, 2026-11-22): a `candidate` pinned BESIDE
+# the default p4g, published on the seedling-wasm branch p4h-rc1 only.
+!/seedling_bot_ap_p4h_rc1/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/

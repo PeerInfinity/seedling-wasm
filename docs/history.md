@@ -236,3 +236,21 @@ Sizes:
 | p4d | 36,242,097 B | 36,474,542 B |
 | original | 35,793,537 B | 35,992,905 B |
 | p4g | — (p4f 36,303,978 B) | 36,540,450 B |
+
+## The p4h release candidate 1 of 2026-11-22 (beside the default p4g, on a branch)
+
+⛓ **`seedling_bot_ap_p4h_rc1`, a `candidate`, published on the branch `p4h-rc1` only** (Archipelago-CC slice
+`rules-p4h-rc1`, ⚖ Robert 2026-11-22: *"I approve the rebuild, but I also want to include the other changes that were
+waiting for the next wasm build."*). The default stays `seedling_bot_ap_p4g`, untouched; no Archipelago-CC gitlink
+points at this branch. AS3: PeerInfinity/Seedling `p4h-as3` @ `169247c4c4` (p4g's `ccdf189776` plus the deterministic
+L57/L112 boss draws, `Pickups/APChest` for an `<apitem kind="chest">`, tape_version 13 `secondaries`, `botActivators`,
+the checkpoint readout and the post-finish `pinFault` guard). Recompiler: SWFRecomp-CC `c2a423d3d`. ⛔ The runtime
+SharedObject host hook is NOT in rc1; the final p4h is rebuilt on the recompiler that carries it.
+
+Five capability words are PROPOSED after p4g's seven — `secondaries`, `apchest`, `activators`, `checkpoint`,
+`bossdraws` — and are not yet in Archipelago-CC's vocabulary, so that repo's pins gate reds on this row (nothing there
+names the build, and the words are unknown) until the outer unit that adopts it lands.
+
+| build | wasm |
+|---|---|
+| p4h_rc1 | 36,519,195 B (p4g 36,540,450 B) |
