@@ -236,3 +236,24 @@ Sizes:
 | p4d | 36,242,097 B | 36,474,542 B |
 | original | 35,793,537 B | 35,992,905 B |
 | p4g | — (p4f 36,303,978 B) | 36,540,450 B |
+
+## The p4h candidate of 2026-11-22 (beside the default p4g)
+
+⛓ **`seedling_bot_ap_p4h`, a `candidate`, pinned beside the default `seedling_bot_ap_p4g`** (built by Archipelago-CC
+slice `rules-p4h-rc1`, ⚖ Robert 2026-11-22: *"I approve the rebuild, but I also want to include the other changes that
+were waiting for the next wasm build."*; pinned on `main` by slice `seedling-p4h-beside`). The default is untouched.
+AS3: PeerInfinity/Seedling `p4h-as3` @ `169247c4c4` (p4g's `ccdf189776` plus the deterministic L57/L112 boss draws,
+`Pickups/APChest` for an `<apitem kind="chest">`, tape_version 13 `secondaries`, `botActivators`, the checkpoint
+readout and the post-finish `pinFault` guard). Recompiler: SWFRecomp-CC `746c39489` (the AVM2 SharedObject host hook,
+`Module.swfSharedObjectHost` and the `avm2_so_reload` / `avm2_so_flush_all` exports; with no host hook set it behaves
+as before). Six capability words follow p4g's seven: `secondaries`, `apchest`, `activators`, `checkpoint`,
+`bossdraws`, `sosave` — declared in Archipelago-CC's vocabulary by the same unit that pins the build.
+
+Its release candidate 1, `seedling_bot_ap_p4h_rc1` (the same SWF bytes on SWFRecomp-CC `c2a423d3d`, without the
+host hook), is evidence only: it stays on the branch `p4h-rc1` and is not pinned here. Measured against rc1 on the
+same 39 tape rows, one fresh page each: the drain stream, the seam latch, the cleared set and the hits are identical
+on every row, and p4g ↔ p4h are identical on the 12-tape seeded sample outside L57/L112.
+
+| build | wasm |
+|---|---|
+| p4h | 36,526,515 B (p4g 36,540,450 B) |

@@ -47,6 +47,10 @@
 # granted by the host), on the frame-leak-fixed runtime with the AudioWorklet
 # output. p4f is RETIRED (the D2 precedent); p4d above stays its CONTROL.
 !/seedling_bot_ap_p4g/
+# ⛓ THE p4h CANDIDATE (rules-p4h-rc1 built it, seedling-p4h-beside pins it, 2026-11-22):
+# p4g's AS3 plus the p4h changes, on SWFRecomp-CC 746c39489 (the SharedObject host hook,
+# `sosave`); a `candidate` beside the default p4g. Its rc1 stays on the branch p4h-rc1.
+!/seedling_bot_ap_p4h/
 
 # ── the demo build (⚖ ruling 4: `demo: true` + the README link) ──────────
 !/seedling_original/
